@@ -35,11 +35,11 @@ def build_pipeline(
         SentenceSplitter(chunk_size=1024, chunk_overlap=50),
         CustomTitleExtractor(metadata_mode=MetadataMode.EMBED),
         CustomFilePathExtractor(last_path_length=4, metadata_mode=MetadataMode.EMBED),
-        # SummaryExtractor(
-        #     llm=llm,
-        #     metadata_mode=MetadataMode.EMBED,
-        #     prompt_template=template or SUMMARY_EXTRACT_TEMPLATE,
-        # ),
+        SummaryExtractor(
+            llm=llm,
+            metadata_mode=MetadataMode.EMBED,
+            prompt_template=template or SUMMARY_EXTRACT_TEMPLATE,
+        ),
         embed_model,
     ]
 

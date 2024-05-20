@@ -34,7 +34,9 @@ async def main():
     collection_info = await client.get_collection(
         config["COLLECTION_NAME"] or "aiops24"
     )
-
+    
+    print(collection_info)
+    
     if collection_info.points_count == 0:
         data = read_data("data")
         pipeline = build_pipeline(llm, embeding, vector_store=vector_store)
@@ -54,7 +56,8 @@ async def main():
     retriever = QdrantRetriever(vector_store, embeding, similarity_top_k=3)
 
     queries = read_jsonl("question.jsonl")
-
+    print('问题已读取'\n)
+    
     # 生成答案
     print("Start generating answers...")
 
